@@ -1,78 +1,35 @@
 # Intelligent Monitoring & Observability Platform
 
-![Python](https://img.shields.io/badge/Python-3.13-blue)
-![FastAPI](https://img.shields.io/badge/FastAPI-Backend-green)
-![Docker](https://img.shields.io/badge/Docker-Containerization-blue)
-![Prometheus](https://img.shields.io/badge/Prometheus-Metrics-orange)
-![Machine Learning](https://img.shields.io/badge/ML-AnomalyDetection-red)
-![Status](https://img.shields.io/badge/Status-Active-success)
-
-A scalable backend monitoring and observability platform for tracking API health, request metrics, latency signals, and anomaly patterns using FastAPI, Prometheus metrics, Docker, and machine learning based anomaly detection.
+A production-style backend monitoring platform for tracking API health, request metrics, latency signals, and anomaly patterns using FastAPI, Prometheus metrics, and machine learning based anomaly detection.
 
 ---
 
-# Features
+## Features
 
-- REST API monitoring with FastAPI
-- Real-time request metrics collection
-- API latency tracking
-- Machine learning based anomaly detection
+- FastAPI backend APIs
+- API health monitoring
+- Request latency tracking
 - Prometheus metrics integration
-- Structured logging system
-- Docker containerization
-- Health monitoring endpoints
-- Scalable backend architecture
-- Automated API testing
+- Machine learning based anomaly detection
+- Dockerized deployment
+- Structured logging
+- Production-style backend architecture
 
 ---
 
-# Architecture
+## Tech Stack
 
-```text
-Client / API User
-        |
-        v
-FastAPI Backend
-        |
-        +-------------------+
-        |                   |
-        v                   v
-Monitoring Layer      ML Anomaly Detection
-        |                   |
-        v                   v
-Prometheus Metrics     Isolation Forest Model
-        |
-        v
-Logging & Observability
-```
-
----
-
-# Tech Stack
-
-## Backend
-- Python
+- Python 3.13
 - FastAPI
 - Uvicorn
-
-## Machine Learning
 - Scikit-learn
-- Isolation Forest
-
-## Monitoring & Observability
 - Prometheus Client
-- Structured Logging
-
-## DevOps & Infrastructure
 - Docker
-- Docker Compose
-
-## Testing
-- Pytest
+- GitHub
 
 ---
 
-# Project Structure
+## Project Structure
 
 ```text
 intelligent-monitoring-observability-platform/
@@ -94,135 +51,80 @@ intelligent-monitoring-observability-platform/
 ├── tests/
 │   └── test_health.py
 │
+├── Screenshots/
+│   ├── api-docs.png
+│   ├── anomaly-detection.png
+│   └── metrics-endpoint.png
+│
 ├── Dockerfile
 ├── docker-compose.yml
 ├── requirements.txt
-└── README.md
+├── README.md
+└── .gitignore
 ```
 
 ---
 
-# API Endpoints
+## API Documentation
 
-## Home Endpoint
+### Swagger API Docs
 
-```http
-GET /
-```
-
-Response:
-
-```json
-{
-  "message": "Intelligent Monitoring Platform Running"
-}
-```
+![API Docs](Screenshots/api-docs.png)
 
 ---
 
-## Health Check Endpoint
+### Anomaly Detection Endpoint
 
-```http
-GET /health
-```
-
-Response:
-
-```json
-{
-  "status": "healthy"
-}
-```
+![Anomaly Detection](Screenshots/anomaly-detection.png)
 
 ---
 
-## Anomaly Detection Endpoint
+### Prometheus Metrics Endpoint
 
-```http
-GET /detect-anomaly
-```
+![Metrics Endpoint](Screenshots/metrics-endpoint.png)
 
-Parameters:
+---
 
-| Parameter | Type | Description |
+## Available API Endpoints
+
+| Method | Endpoint | Description |
 |---|---|---|
-| latency_ms | float | API latency |
-| error_count | int | Number of API errors |
-| request_count | int | Total request count |
-
-Example:
-
-```http
-/detect-anomaly?latency_ms=900&error_count=12&request_count=500
-```
-
-Example Response:
-
-```json
-{
-  "latency_ms": 900,
-  "error_count": 12,
-  "request_count": 500,
-  "anomaly_score": -0.24,
-  "is_anomaly": true
-}
-```
+| GET | `/` | Home endpoint |
+| GET | `/health` | Health check |
+| GET | `/detect-anomaly` | ML anomaly detection |
+| GET | `/metrics` | Prometheus metrics |
 
 ---
 
-## Metrics Endpoint
+## Running Locally
 
-```http
-GET /metrics
-```
-
-Used for Prometheus metrics scraping and monitoring.
-
----
-
-# Installation
-
-## Clone Repository
+### Clone Repository
 
 ```bash
 git clone https://github.com/koteshbabubommana/intelligent-monitoring-observability-platform.git
 ```
 
----
-
-## Navigate to Project
+### Navigate to Project
 
 ```bash
 cd intelligent-monitoring-observability-platform
 ```
 
----
-
-## Install Dependencies
+### Install Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
----
-
-# Run Application
+### Run Application
 
 ```bash
-uvicorn app.main:app --reload
-```
-
-Application runs on:
-
-```text
-http://127.0.0.1:8000
+python -m uvicorn app.main:app --reload
 ```
 
 ---
 
-# Swagger API Documentation
-
-Open:
+## Open Swagger UI
 
 ```text
 http://127.0.0.1:8000/docs
@@ -230,67 +132,67 @@ http://127.0.0.1:8000/docs
 
 ---
 
-# Run Tests
+## Example Anomaly Detection Request
 
-```bash
-pytest
+```text
+GET /detect-anomaly?latency_ms=900&error_count=12&request_count=500
+```
+
+### Example Response
+
+```json
+{
+  "latency_ms": 900.0,
+  "error_count": 12,
+  "request_count": 500,
+  "anomaly_score": -0.244995,
+  "is_anomaly": true
+}
 ```
 
 ---
 
-# Docker Setup
+## Docker Support
 
-## Build Container
+### Build Docker Image
 
 ```bash
-docker build -t monitoring-platform .
+docker build -t intelligent-monitoring-platform .
+```
+
+### Run Docker Container
+
+```bash
+docker run -p 8000:8000 intelligent-monitoring-platform
 ```
 
 ---
 
-## Run Container
+## Monitoring Features
 
-```bash
-docker run -p 8000:8000 monitoring-platform
-```
+- Real-time API monitoring
+- Request count tracking
+- Latency monitoring
+- Prometheus metrics exposure
+- Structured backend logging
+- Machine learning anomaly detection
 
 ---
 
-# Future Enhancements
+## Future Improvements
 
 - Grafana dashboard integration
-- Kafka event streaming
-- Redis caching layer
+- CI/CD GitHub Actions pipeline
+- Cloud deployment on AWS/GCP
 - Kubernetes deployment
-- CI/CD pipeline automation
-- JWT authentication
-- Real-time monitoring dashboard
-- AWS cloud deployment
-- Distributed tracing
+- Advanced anomaly prediction models
 - Alerting system integration
 
 ---
 
-# Key Engineering Concepts Demonstrated
+## Author
 
-- Backend API development
-- Distributed systems concepts
-- Observability engineering
-- Monitoring systems
-- Machine learning integration
-- Production-style logging
-- API performance tracking
-- Containerization
-- Service health monitoring
-- Scalable backend architecture
+Kotesh Babu Bommana
 
----
-
-# Author
-
-## Kotesh Babu Bommana
-
-Software Engineer focused on backend systems, distributed systems, APIs, cloud infrastructure, and scalable monitoring platforms.
-
-- LinkedIn: https://www.linkedin.com/in/kotesh-babu-bommana
-- GitHub: https://github.com/koteshbabubommana
+GitHub: https://github.com/koteshbabubommana
+LinkedIn: https://www.linkedin.com
