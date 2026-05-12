@@ -1,4 +1,11 @@
 # Intelligent Monitoring & Observability Platform
+![Python](https://img.shields.io/badge/Python-3.13-blue?logo=python)
+![FastAPI](https://img.shields.io/badge/FastAPI-Backend-green?logo=fastapi)
+![Docker](https://img.shields.io/badge/Docker-Containerized-blue?logo=docker)
+![Prometheus](https://img.shields.io/badge/Prometheus-Metrics-orange?logo=prometheus)
+![Machine Learning](https://img.shields.io/badge/ML-Anomaly_Detection-red)
+![GitHub Actions](https://img.shields.io/badge/CI-GitHub_Actions-black?logo=githubactions)
+![CI](https://github.com/koteshbabubommana/intelligent-monitoring-observability-platform/actions/workflows/python-ci.yml/badge.svg)
 
 A production-style backend monitoring platform for tracking API health, request metrics, latency signals, and anomaly patterns using FastAPI, Prometheus metrics, and machine learning based anomaly detection.
 
